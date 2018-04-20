@@ -7,10 +7,6 @@ import {
     View,
     TextInput
 } from 'react-native';
-// import {
-//     FormLabel,
-//     FormInput
-// } from "react-native-elements";
 
 
 export default class LogIn extends Component {
@@ -25,12 +21,6 @@ export default class LogIn extends Component {
     render() {
         return (
             <View>
-                {/* <FormLabel>Email</FormLabel>
-                <FormInput
-                    style={{height: 40 }}
-                    placeholder="john@gmail.com"
-                    onEndEditing={(email) => this.setState({ email }).trim()}
-                    /> */}
                 <TextInput
                     style={{ height: 40 }}
                     placeholder="Email Goes Here"
@@ -42,17 +32,11 @@ export default class LogIn extends Component {
                     secureTextEntry={true}
                     onEndEditing={(password) => this.setState({ password })}
                 />
-                <TextInput
-                    style={{ height: 40 }}
-                    placeholder="Confirm Password"
-                    secureTextEntry={true}
-                    onEndEditing={(password) => this.setState({ password })}
-                />
                 <Button
                     onPress={() => {
-                        alert("You are creating an account!");
+                        alert("You are logging in!");
                     }}
-                    title="Create My Account"
+                    title="Log In"
                 />
             </View>
         );

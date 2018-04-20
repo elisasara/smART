@@ -3,10 +3,12 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 import StartScreen from "./components/startscreen";
 import LogIn from "./components/login";
+import NewUser from "./components/newUser";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -20,8 +22,14 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
+      <StatusBar
+        backgroundColor="blue"
+        barStyle="dark-content"
+        hidden={false}
+        />
         {/* <StartScreen /> */}
-        <LogIn />
+        {/* <LogIn /> */}
+        <NewUser />
       </View>
     );
   }
