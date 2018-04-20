@@ -7,6 +7,10 @@ import {
     View,
     TextInput
 } from 'react-native';
+// import {
+//     FormLabel,
+//     FormInput
+// } from "react-native-elements";
 
 
 export default class LogIn extends Component {
@@ -15,11 +19,18 @@ export default class LogIn extends Component {
         this.state = {
             email: "",
             password: "",
+            error: "",
         }
     };
     render() {
         return (
             <View>
+                {/* <FormLabel>Email</FormLabel>
+                <FormInput
+                    style={{height: 40 }}
+                    placeholder="john@gmail.com"
+                    onEndEditing={(email) => this.setState({ email }).trim()}
+                    /> */}
                 <TextInput
                     style={{ height: 40 }}
                     placeholder="Email Goes Here"
