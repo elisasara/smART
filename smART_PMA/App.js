@@ -9,6 +9,8 @@ import {
 import StartScreen from "./components/startscreen";
 import LogIn from "./components/login";
 import NewUser from "./components/newUser";
+import GalleryChoice from "./components/galleryChoice";
+import SliderImages from "./components/slider";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -29,7 +31,9 @@ export default class App extends Component<Props> {
         />
         {/* <StartScreen /> */}
         {/* <LogIn /> */}
-        <NewUser />
+        {/* <NewUser /> */}
+        {/* < GalleryChoice /> */}
+        <SliderImages />
       </View>
     );
   }
