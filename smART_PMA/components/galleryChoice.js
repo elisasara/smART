@@ -14,31 +14,31 @@ export default class GalleryChoice extends Component {
             <View>
                 <Button
                     onPress={() => {
-                        alert("You clicked Gallery 1");
+                        this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 1"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Gallery 2");
+                        this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 2"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Gallery 3");
+                        this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 3"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Gallery 4");
+                        this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 4"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Gallery 5");
+                        this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 5"
                 />
