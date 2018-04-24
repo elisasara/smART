@@ -6,6 +6,8 @@ import {
     Text,
     View
 } from 'react-native';
+import {StackNavigator} from "react-navigation";
+
 
 
 export default class StartScreen extends Component {
@@ -14,28 +16,27 @@ export default class StartScreen extends Component {
             <View>
                 <Button
                     onPress={() => {
-                        alert("You clicked Log In");
+                        this.props.navigation.navigate("Login");
                     }}
                     title="Log In"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Create an Account");
+                        this.props.navigation.navigate("CreateAccount");
                     }}
                     title="Create an Account"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Discover");
+                        this.props.navigation.navigate("Discover");
                     }}
                     title="DISCOVER"
                 />
                 <Button
                     onPress={() => {
-                        alert("You clicked Pick a Gallery");
+                        this.props.navigation.navigate("PickGallery");
                     }}
                     title="Pick a Gallery"
-                    style={styles.button}
                 />
             </View>
         );
