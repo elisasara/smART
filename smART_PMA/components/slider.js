@@ -8,24 +8,14 @@ import {
     StatusBar
 } from 'react-native';
 import Swiper from "react-native-deck-swiper";
-// import Swipeout from "react-native-swipeout";
 
-// const swipeoutBtns = [
-//     {
-//         text: "Button"
-//     }
-// ];
-
-var image = "http://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg";
 
 export default class SliderImages extends Component {
     constructor(props) {
         super(props);
         this.state = {
             // cards: ["Card 1", "Card 2", "Card 3"],
-            // cards: [image],
-            cards: ["https://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg"],
-            // , "http://philamuseum.org/images/cad/zoomers/1985-52-36589-mccrindle.jpg", "http://philamuseum.org/images/cad/zoomers/1956-118-1-CX.jpg"],
+            cards: ["https://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg", "http://philamuseum.org/images/cad/zoomers/1985-52-36589-mccrindle.jpg", "http://philamuseum.org/images/cad/zoomers/1956-118-1-CX.jpg"],
             swipedAllCards: false,
             swipeDirection: "",
             isSwipingBack: false,
@@ -36,14 +26,14 @@ export default class SliderImages extends Component {
     renderCard = card => {
         return (
             <View style={styles.card}>
-            {/* <Image source={{uri: {card}}}
+            <Image source={{ uri : card }}
             style={{ height: 200, width: 200 }}
-            /> */}
-                <Image
+            />
+                {/* <Image
                     style={{ height: 200, width: 200 }}
-                    source={{ uri: {card} }}
-                // source={require("../images/testImage.jpeg")}
-                />
+                    source={{ uri: card }} */}
+                {/* // source={require("../images/testImage.jpeg")}
+                /> */}
 
                 {/* <Text style={styles.text}>{card}</Text> */}
             </View>
@@ -88,7 +78,7 @@ export default class SliderImages extends Component {
                         this.swiper = swiper
                     }}
                     onSwiped={this.onSwiped}
-                    onTapCard={this.swipeLeft}
+                    // onTapCard={this.swipeLeft}
                     cards={this.state.cards}
                     cardIndex={this.state.cardIndex}
                     cardVerticalMargin={80}
