@@ -27,7 +27,8 @@ export default class SliderImages extends Component {
         return (
             <View style={styles.card}>
             <Image source={{ uri : card }}
-            style={{ height: 200, width: 200 }}
+            style={{ flex: 1, alignContent: 'center' }}
+            // style={{ height: 200, width: 200 }}
             />
                 {/* <Image
                     style={{ height: 200, width: 200 }}
