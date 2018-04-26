@@ -16,13 +16,16 @@ import Swiper from "react-native-deck-swiper";
 //     }
 // ];
 
-const images = ["http://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg", "http://philamuseum.org/images/cad/zoomers/1985-52-36589-mccrindle.jpg", "http://philamuseum.org/images/cad/zoomers/1956-118-1-CX.jpg"];
+var image = "http://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg";
 
 export default class SliderImages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cards: ["Card 1", "Card 2", "Card 3"],
+            // cards: ["Card 1", "Card 2", "Card 3"],
+            // cards: [image],
+            cards: ["https://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg"],
+            // , "http://philamuseum.org/images/cad/zoomers/1985-52-36589-mccrindle.jpg", "http://philamuseum.org/images/cad/zoomers/1956-118-1-CX.jpg"],
             swipedAllCards: false,
             swipeDirection: "",
             isSwipingBack: false,
@@ -33,7 +36,16 @@ export default class SliderImages extends Component {
     renderCard = card => {
         return (
             <View style={styles.card}>
-                <Text style={styles.text}>{card}</Text>
+            {/* <Image source={{uri: {card}}}
+            style={{ height: 200, width: 200 }}
+            /> */}
+                <Image
+                    style={{ height: 200, width: 200 }}
+                    source={{ uri: {card} }}
+                // source={require("../images/testImage.jpeg")}
+                />
+
+                {/* <Text style={styles.text}>{card}</Text> */}
             </View>
         )
     };
@@ -86,43 +98,33 @@ export default class SliderImages extends Component {
                     stackSeparation={15}>
                 </Swiper>
             </View>
-
-                    // <Swipeout right={swipeoutBtns} left={swipeoutBtns}>
-                    /* <View>
-                    <Image
-                        style={{ height: 200, width: 200 }}
-                        source={{uri: "http://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg"}}
-                        // source={require("../images/testImage.jpeg")}
-                    />
-                </View> */
-            // </Swipeout>
         )
-                }
+    }
 };
 
 const styles = StyleSheet.create({
-                    container: {
-                    flex: 1,
-      backgroundColor: '#F5FCFF'
+    container: {
+        flex: 1,
+        backgroundColor: '#F5FCFF'
     },
     card: {
-                    flex: 1,
-      borderRadius: 4,
-      borderWidth: 2,
-      borderColor: '#E8E8E8',
-      justifyContent: 'center',
-      backgroundColor: 'white'
+        flex: 1,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#E8E8E8',
+        justifyContent: 'center',
+        backgroundColor: 'white'
     },
     text: {
-                    textAlign: 'center',
-      fontSize: 50,
-      backgroundColor: 'transparent'
+        textAlign: 'center',
+        fontSize: 50,
+        backgroundColor: 'transparent'
     },
     done: {
-                    textAlign: 'center',
-      fontSize: 30,
-      color: 'white',
-      backgroundColor: 'transparent'
+        textAlign: 'center',
+        fontSize: 30,
+        color: 'white',
+        backgroundColor: 'transparent'
     }
-  })
-  
+})
+
