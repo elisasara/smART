@@ -6,14 +6,17 @@ import {
   View,
   StatusBar
 } from 'react-native';
-import {StackNavigator} from "react-navigation";
+import { StackNavigator } from "react-navigation";
 import StartScreen from "./components/startscreen";
 import LogIn from "./components/login";
 import NewUser from "./components/newUser";
 import GalleryChoice from "./components/galleryChoice";
 import SliderImages from "./components/slider";
 
-const RootStack = StackNavigator (
+//for Auth
+import firebase from 'react-native-firebase';
+
+const RootStack = StackNavigator(
   {
     Home: {
       screen: StartScreen
@@ -37,7 +40,30 @@ const RootStack = StackNavigator (
 );
 
 export default class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      isAuthenticated: false,
+    };
+  }
+
+  componentDidMount() {
+    firebase.auth().signInAnonymously()
+      .then(() => {
+        this.setState({
+          isAuthenticated: true,
+        });
+      });
+  }
+
   render() {
+
+    // If the user has not authenticated
+    if (!this.state.isAuthenticated) {
+      return null;
+    }
+
     return (
       <RootStack />
     )
