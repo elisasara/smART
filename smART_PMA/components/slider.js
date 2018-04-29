@@ -9,13 +9,26 @@ import {
 } from 'react-native';
 import Swiper from "react-native-deck-swiper";
 
+let imagesArr = [];
+
+// function getImages() {
+//     return fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+//         .then((response) => response.json())
+//         .then((responseJson) => {
+//             var image = responseJson.Image;
+//             this.state.cards.push(image);
+//         })
+// }
 
 export default class SliderImages extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            // cards: ["Card 1", "Card 2", "Card 3"],
-            cards: ["https://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg", "http://philamuseum.org/images/cad/zoomers/1985-52-36589-mccrindle.jpg", "http://philamuseum.org/images/cad/zoomers/1956-118-1-CX.jpg"],
+            isLoading: true,
+            imageCards: [],
+            cards: "",
+            // cards: ["https://philamuseum.org/images/cad/zoomers/2007-65-3-pma-CX.jpg", "http://philamuseum.org/images/cad/zoomers/1985-52-36589-mccrindle.jpg", "http://philamuseum.org/images/cad/zoomers/1956-118-1-CX.jpg"],
             swipedAllCards: false,
             swipeDirection: "",
             isSwipingBack: false,
@@ -23,12 +36,50 @@ export default class SliderImages extends Component {
         }
     }
 
+    componentWillMount() {
+        fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+            .then((response) => response.json())
+            .then((response) => {
+                console.log(response.Image);
+                // let image = response.Image;
+                // for (var i=0; i<response.length; i++) {
+                this.setState({
+                    imageCards: response,
+                    cards: response.Image
+                });
+
+                // imagesArr.push(response.Image);
+                // }  
+            });
+    };
+
+
+    // componentWillMount (){
+    //         return fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+    //             .then((response) => response.json())
+    //             .then((responseJson) => {
+    //                 this.setState({
+    //                     isLoading: false,
+    //                     dataSource:responseJson.Image
+    //                 }, function (){
+    //                     for (var i=0; i<responseJson.lenghth; i++) {
+    //                         imagesArr.push(responseJson[i].Image);
+    //                     }
+    //                     // var image = responseJson.Image;
+    //                     // this.state.cards.push(image);    
+    //                 });   
+    //             })
+    //             .catch((error) => {
+    //                 console.error(error);
+    //             });
+    // };
+
     renderCard = card => {
         return (
             <View style={styles.card}>
-            <Image source={{ uri : card }}
-            style={{ flex: 1, alignContent: 'center' }}
-            />
+                <Image source={{ uri: card }}
+                    style={{ flex: 1, alignContent: 'center' }}
+                />
             </View>
         )
     };
@@ -72,12 +123,12 @@ export default class SliderImages extends Component {
                     }}
                     onSwiped={this.onSwiped}
                     // onTapCard={this.swipeLeft}
-                    cards={this.state.cards}
+                    cards={this.state.cards.Image}
                     cardIndex={this.state.cardIndex}
                     cardVerticalMargin={80}
                     renderCard={this.renderCard}
                     onSwipedAll={this.onSwipedAllCards}
-                    stackSize={3}
+                    stackSize={1}
                     stackSeparation={15}>
                 </Swiper>
             </View>
