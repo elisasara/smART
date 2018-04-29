@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "463562675073",
+    "firebase_url": "https://hackathon3-60a6f.firebaseio.com",
+    "project_id": "hackathon3-60a6f",
+    "storage_bucket": "hackathon3-60a6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463562675073:android:57a8173080457379",
+        "android_client_info": {
+          "package_name": "com.smART_PMA"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463562675073-gbuabeu02dr6k4ilmjvmk2dskfndojjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtn0_fQuXx3WetwE5KKO6uj6QIc5C6Cho"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
