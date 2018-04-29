@@ -8,20 +8,8 @@ import {
     StatusBar
 } from 'react-native';
 import Swiper from "react-native-deck-swiper";
-// import apiCall from "./api"
-
 
 export default class SliderImages extends Component {
-    // componentDidMount (){
-    //     fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-    //     .then((response) => response.json())
-    //     .then((response) => {
-    //         console.log(response.Image);
-    //         this.setState({
-    //             cards: response.Image
-    //         });
-    //     });
-    // };
 
     constructor(props) {
         super(props);
@@ -60,6 +48,9 @@ export default class SliderImages extends Component {
         this.setState({
             swipedAllCards: true
         })
+        // if (this.state.swipedAllCards) {
+        // Add in direction to next card
+        // };
     };
 
     swipeBack = () => {

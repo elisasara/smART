@@ -22,23 +22,25 @@ export default class NewUser extends Component {
             // keyboardDidShowListener:""
         }
     };
+
     // componentDidMount () {
     //     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     //     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-    //   }
+    //   };
     
     //   componentWillUnmount () {
     //     this.keyboardDidShowListener.remove();
     //     this.keyboardDidHideListener.remove();
-    //   }
+    //   };
     
     //   _keyboardDidShow () {
     //     alert('Keyboard Shown');
-    //   }
+    //   };
     
     //   _keyboardDidHide () {
     //     alert('Keyboard Hidden');
-    //   }
+    //   };
+
     render() {
         return (
             <View>
@@ -46,12 +48,14 @@ export default class NewUser extends Component {
                     style={{ height: 40 }}
                     placeholder="Email Goes Here"
                     onEndEditing={(email) => this.setState({ email })}
+                    value = {this.state.email}
                 />
                 <TextInput
                     style={{ height: 40 }}
                     placeholder="Password"
                     secureTextEntry={true}
                     onEndEditing={(password) => this.setState({ password })}
+                    value = {this.state.password}
                 />
                 <TextInput
                     style={{ height: 40 }}
