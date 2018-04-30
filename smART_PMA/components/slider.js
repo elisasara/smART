@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Swiper from "react-native-deck-swiper";
 
+
 export default class SliderImages extends Component {
 
     constructor(props) {
@@ -24,15 +25,46 @@ export default class SliderImages extends Component {
     }
 
     componentWillMount() {
-        fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+        // const {params} = this.props.navigation.state;
+        // var objectIds = params ? params.objectIds: null;
+        // console.log("objects", this.props.navigation.state.params.objectIds);
+        // for (var i=0; i<this.props.navigation.state.params.objectIds.length; i++) {
+        //     var objectId = this.props.navigation.state.params.objectIds[i];
+        // console.log("objects: " + params.objectIds);
+        // for (var i=0; i<objectIds.length; i++) {
+        //     var objectId = objectIds[i];
+        var objectId = ""
+        fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
             .then((response) => response.json())
             .then((response) => {
-                console.log(response.Image);
-                this.setState({
-                    cards: [response.Image]
+                console.log(response.ObjectIDs);
+                objectId = response.ObjectIDs[4];
+                fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+
+                // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+                .then((response) => response.json())
+                .then((response) => {
+                    console.log(response.Image);
+                    this.setState({
+                        cards: [response.Image]
+                    });
                 });
-            });
+            })
+            // for (var i=0; i<objectIds.length; i++) {
+            //     var objectId = objectIds[i];
+
+            // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+
+            //     // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+            //     .then((response) => response.json())
+            //     .then((response) => {
+            //         console.log(response.Image);
+            //         this.setState({
+            //             cards: [response.Image]
+            //         });
+            //     });
     };
+    // };
 
     renderCard = card => {
         return (
