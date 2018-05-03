@@ -26,18 +26,19 @@ export default class SliderImages extends Component {
 
     componentWillMount() {
         var objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
-        // var objectImages = [];
+        // var objectImages = "";
+
         for (var i = 0; i < objectArr.length; i++) {
             fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[i] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
                 .then((response) => response.json())
                 .then((data) => {
-                    let image = data.Image;
-                    // this.setState(state => ({...state, cards: state.cards.concat(image)}))
+                    // console.log(data);
+                    // this.setState(state => ({...state, cards: state.cards.concat(data.Image)}))
                     // let images = Array.from(this.state.cards);
                     // images.push(data.Image);
                     // this.setState({cards: image})
                         this.setState(prevState => ({
-                        cards: [...prevState.cards,  image] 
+                        cards: [...prevState.cards,  data.Image] 
                         }))
                 });
         }
@@ -45,39 +46,39 @@ export default class SliderImages extends Component {
 
 
 
-    
-        // this.setState({
-        //     cards: objectImages
-        // });
-        // fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-        //     .then((response) => response.json())
-        //     .then((response) => {
-        //         console.log(response.ObjectIDs);
-        //         objectId = response.ObjectIDs[4];
-        //         fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
 
-        //             // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-        //             .then((response) => response.json())
-        //             .then((response) => {
-        //                 console.log(response.Image);
-        //                 this.setState({
-        //                     cards: [response.Image]
-        //                 });
-        //             });
-        //     })
-        // for (var i=0; i<objectIds.length; i++) {
-        //     var objectId = objectIds[i];
+    // this.setState({
+    //     cards: objectImages
+    // });
+    // fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+    //     .then((response) => response.json())
+    //     .then((response) => {
+    //         console.log(response.ObjectIDs);
+    //         objectId = response.ObjectIDs[4];
+    //         fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
 
-        // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+    //             // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+    //             .then((response) => response.json())
+    //             .then((response) => {
+    //                 console.log(response.Image);
+    //                 this.setState({
+    //                     cards: [response.Image]
+    //                 });
+    //             });
+    //     })
+    // for (var i=0; i<objectIds.length; i++) {
+    //     var objectId = objectIds[i];
 
-        //     // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-        //     .then((response) => response.json())
-        //     .then((response) => {
-        //         console.log(response.Image);
-        //         this.setState({
-        //             cards: [response.Image]
-        //         });
-        //     });
+    // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+
+    //     // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+    //     .then((response) => response.json())
+    //     .then((response) => {
+    //         console.log(response.Image);
+    //         this.setState({
+    //             cards: [response.Image]
+    //         });
+    //     });
     // };
 
     renderCard = card => {
