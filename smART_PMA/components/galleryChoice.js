@@ -14,12 +14,7 @@ export default class GalleryChoice extends Component {
             <View>
                 <Button
                     onPress={() => {
-                        fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-                            .then((response) => response.json())
-                            .then((response) => {
-                                console.log(response.ObjectIDs);
-                                this.props.navigation.navigate("Discover", {objectIds: response.objectIDs});
-                            })
+                                this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 1"
                 />

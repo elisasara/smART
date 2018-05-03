@@ -16,7 +16,7 @@ export default class SliderImages extends Component {
         super(props);
         this.state = {
             isLoading: true,
-            cards: [""],
+            cards: [],
             swipedAllCards: false,
             swipeDirection: "",
             isSwipingBack: false,
@@ -25,45 +25,59 @@ export default class SliderImages extends Component {
     }
 
     componentWillMount() {
-        // const {params} = this.props.navigation.state;
-        // var objectIds = params ? params.objectIds: null;
-        // console.log("objects", this.props.navigation.state.params.objectIds);
-        // for (var i=0; i<this.props.navigation.state.params.objectIds.length; i++) {
-        //     var objectId = this.props.navigation.state.params.objectIds[i];
-        // console.log("objects: " + params.objectIds);
+        var objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
+        // var objectImages = [];
+        for (var i = 0; i < objectArr.length; i++) {
+            fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[i] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+                .then((response) => response.json())
+                .then((data) => {
+                    let image = data.Image;
+                    // this.setState(state => ({...state, cards: state.cards.concat(image)}))
+                    // let images = Array.from(this.state.cards);
+                    // images.push(data.Image);
+                    // this.setState({cards: image})
+                        this.setState(prevState => ({
+                        cards: [...prevState.cards,  image] 
+                        }))
+                });
+        }
+    };
+
+
+
+    
+        // this.setState({
+        //     cards: objectImages
+        // });
+        // fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+        //     .then((response) => response.json())
+        //     .then((response) => {
+        //         console.log(response.ObjectIDs);
+        //         objectId = response.ObjectIDs[4];
+        //         fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+
+        //             // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+        //             .then((response) => response.json())
+        //             .then((response) => {
+        //                 console.log(response.Image);
+        //                 this.setState({
+        //                     cards: [response.Image]
+        //                 });
+        //             });
+        //     })
         // for (var i=0; i<objectIds.length; i++) {
         //     var objectId = objectIds[i];
-        var objectId = ""
-        fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-            .then((response) => response.json())
-            .then((response) => {
-                console.log(response.ObjectIDs);
-                objectId = response.ObjectIDs[4];
-                fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
 
-                // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-                .then((response) => response.json())
-                .then((response) => {
-                    console.log(response.Image);
-                    this.setState({
-                        cards: [response.Image]
-                    });
-                });
-            })
-            // for (var i=0; i<objectIds.length; i++) {
-            //     var objectId = objectIds[i];
+        // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
 
-            // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectId + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-
-            //     // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-            //     .then((response) => response.json())
-            //     .then((response) => {
-            //         console.log(response.Image);
-            //         this.setState({
-            //             cards: [response.Image]
-            //         });
-            //     });
-    };
+        //     // fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=34120&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+        //     .then((response) => response.json())
+        //     .then((response) => {
+        //         console.log(response.Image);
+        //         this.setState({
+        //             cards: [response.Image]
+        //         });
+        //     });
     // };
 
     renderCard = card => {
@@ -80,9 +94,6 @@ export default class SliderImages extends Component {
         this.setState({
             swipedAllCards: true
         })
-        // if (this.state.swipedAllCards) {
-        // Add in direction to next card
-        // };
     };
 
     swipeBack = () => {
@@ -123,7 +134,7 @@ export default class SliderImages extends Component {
                     cardVerticalMargin={80}
                     renderCard={this.renderCard}
                     onSwipedAll={this.onSwipedAllCards}
-                    stackSize={1}
+                    stackSize={this.state.cards.length}
                     stackSeparation={15}>
                 </Swiper>
             </View>
