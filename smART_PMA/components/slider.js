@@ -31,12 +31,11 @@ export default class SliderImages extends Component {
 
 
     componentWillMount() {
-        // let objectImages = [];
+        let objectImages = [];
         let objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
         let check = 0;
 
-        let getImages = () => {
-            var objectImages = "";
+        function getImages (){
             console.log(objectArr);
             console.log("Images: " + objectImages);
             console.log("Check: " + check);
@@ -46,8 +45,7 @@ export default class SliderImages extends Component {
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data);
-                        // let image = data.Image;
-                        objectImages = objectImages  + "," + data.Image;
+                        objectImages.push(data.Image);
                         check++;
                         getImages();
                     })
