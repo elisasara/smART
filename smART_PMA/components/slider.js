@@ -9,6 +9,9 @@ import {
 } from 'react-native';
 import Swiper from "react-native-deck-swiper";
 
+let objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
+let objectImages = [];
+
 
 export default class SliderImages extends Component {
 
@@ -24,32 +27,90 @@ export default class SliderImages extends Component {
         }
     }
 
-    componentWillMount() {
-        var objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
-        // var objectImages = "";
 
-        for (var i = 0; i < objectArr.length; i++) {
+
+
+    componentWillMount() {
+        // let objectImages = [];
+        let objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
+        // let check = 0;
+        let objectImages = [];
+
+        // let getImages = () => {
+
+        //     fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[check] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+        //         .then((response) => response.json())
+        //         .then((data) => {
+        //             // let image = data.Image;
+        //             // objectImages.push(image);
+        //             // console.log(data);
+        //             // var objectImages = [];
+        //             // let newArr = this.state.cards.slice();
+        //             // newArr.push(data.Image);
+
+        //             // this.setState(state => ({...state, cards: state.cards.concat(data.Image)}))
+        //             // let images = Array.from(this.state.cards);
+        //             // cards = objectImages;
+
+        //             // this.setState({cards: image})
+        //             console.log("Images: " + data.Image);
+        //             this.setState(prevState => ({
+        //                 cards: [...prevState.cards, data.Image]
+        //             }))
+        //         });
+
+        //     check++
+        //     if (check < objectArr.length) {
+        //         getImages();
+        //     };
+        // }
+
+        // getImages();
+
+
+        for (let i = 0; i < objectArr.length; i++) {
             fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[i] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data);
-                    // this.setState(state => ({...state, cards: state.cards.concat(data.Image)}))
-                    // let images = Array.from(this.state.cards);
-                    // images.push(data.Image);
-                    // this.setState({cards: image})
-                        this.setState(prevState => ({
-                        cards: [...prevState.cards,  data.Image] 
-                        }))
+                    let image = data.Image;
+                    objectImages.push(image);
+        //             // console.log(data);
+        //             // var objectImages = [];
+        //             // let newArr = this.state.cards.slice();
+        //             // newArr.push(data.Image);
+
+        //             // this.setState(state => ({...state, cards: state.cards.concat(data.Image)}))
+        //             // let images = Array.from(this.state.cards);
+        //             // cards = objectImages;
+
+        //             // this.setState({cards: image})
+        //             // this.setState(prevState => ({
+        //             // cards: [...prevState.cards,  data.Image] 
+        //             // }))
+                    console.log("Images: " + data.Image);
+
                 });
-        }
+
+        // };
+        console.log("Images: " + objectImages);
+        // console.log(objectArr);
+        this.setState({
+            cards: objectImages
+        });
     };
+};
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log("Images: " + objectImages);
+    //     console.log(objectArr);
+    //     this.setState({
+    //         cards: objectImages
+    //     });
+    //     console.log("cards: ", this.state.cards);
+
+    // }
 
 
-
-
-    // this.setState({
-    //     cards: objectImages
-    // });
     // fetch("https://hackathon.philamuseum.org/api/v0/collection/object/location?name=116&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
     //     .then((response) => response.json())
     //     .then((response) => {
