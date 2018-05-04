@@ -14,7 +14,7 @@ export default class GalleryChoice extends Component {
             <View>
                 <Button
                     onPress={() => {
-                        this.props.navigation.navigate("Discover");
+                                this.props.navigation.navigate("Discover");
                     }}
                     title="Gallery 1"
                 />
