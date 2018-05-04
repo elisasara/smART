@@ -33,10 +33,33 @@ export default class SliderImages extends Component {
     componentWillMount() {
         // let objectImages = [];
         let objectArr = ["34120", "49639", "55686", "72177", "82476", "94025", "95643", "101687", "102943", "102969", "103024", "184827", "284198"];
-        // let check = 0;
-        let objectImages = [];
+        let check = 0;
 
-        // let getImages = () => {
+        let getImages = () => {
+            var objectImages = "";
+            console.log(objectArr);
+            console.log("Images: " + objectImages);
+            console.log("Check: " + check);
+            // console.log("Images: " + objectImages);
+            if (check < objectArr.length) {
+                fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[check] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        // let image = data.Image;
+                        objectImages = objectImages  + "," + data.Image;
+                        check++;
+                        getImages();
+                    })
+            }
+            else {
+                this.setState({
+                    cards: objectImages
+                });
+            };
+        };
+
+        getImages();
 
         //     fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[check] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
         //         .then((response) => response.json())
@@ -68,37 +91,37 @@ export default class SliderImages extends Component {
         // getImages();
 
 
-        for (let i = 0; i < objectArr.length; i++) {
-            fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[i] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
-                .then((response) => response.json())
-                .then((data) => {
-                    let image = data.Image;
-                    objectImages.push(image);
-        //             // console.log(data);
-        //             // var objectImages = [];
-        //             // let newArr = this.state.cards.slice();
-        //             // newArr.push(data.Image);
+        //     for (let i = 0; i < objectArr.length; i++) {
+        //         fetch("https://hackathon.philamuseum.org/api/v0/collection/object?query=" + objectArr[i] + "&api_token=8dP6ovY0qpRjI7v4Ljs23RykaOWWzbT15i8kPr2in3bPwgNadjK06287MjUa")
+        //             .then((response) => response.json())
+        //             .then((data) => {
+        //                 let image = data.Image;
+        //                 objectImages.push(image);
+        //     //             // console.log(data);
+        //     //             // var objectImages = [];
+        //     //             // let newArr = this.state.cards.slice();
+        //     //             // newArr.push(data.Image);
 
-        //             // this.setState(state => ({...state, cards: state.cards.concat(data.Image)}))
-        //             // let images = Array.from(this.state.cards);
-        //             // cards = objectImages;
+        //     //             // this.setState(state => ({...state, cards: state.cards.concat(data.Image)}))
+        //     //             // let images = Array.from(this.state.cards);
+        //     //             // cards = objectImages;
 
-        //             // this.setState({cards: image})
-        //             // this.setState(prevState => ({
-        //             // cards: [...prevState.cards,  data.Image] 
-        //             // }))
-                    console.log("Images: " + data.Image);
+        //     //             // this.setState({cards: image})
+        //     //             // this.setState(prevState => ({
+        //     //             // cards: [...prevState.cards,  data.Image] 
+        //     //             // }))
+        //                 console.log("Images: " + data.Image);
 
-                });
+        //             });
 
+        //     // };
+        //     console.log("Images: " + objectImages);
+        //     // console.log(objectArr);
+        //     this.setState({
+        //         cards: objectImages
+        //     });
         // };
-        console.log("Images: " + objectImages);
-        // console.log(objectArr);
-        this.setState({
-            cards: objectImages
-        });
     };
-};
 
     // componentDidUpdate(prevProps, prevState) {
     //     console.log("Images: " + objectImages);
